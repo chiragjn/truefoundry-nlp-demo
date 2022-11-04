@@ -1,0 +1,29 @@
+name: sum-fastapi
+components:
+  name: sum-fastapi
+  type: service
+  image:
+    type: build
+    build_spec:
+      type: tfy-python-buildpack
+      command: >-
+        gunicorn app:app --timeout 120 --workers 3 --worker-class
+        uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000 --threads 1
+        --access-logfile -
+      python_version: '3.9'
+      requirements_path: requirements.txt
+      build_context_path: ./
+    build_source:
+      type: local
+  ports:
+    - port: 8000
+      expose: true
+      protocol: TCP
+  replicas: 1
+  resources:
+    cpu_limit: '5'
+    cpu_request: '4'
+    memory_limit: '10000'
+    memory_request: '5000'
+    instance_family:
+      - c6i

@@ -1,0 +1,22 @@
+name: sum-ort-fastapi
+components:
+  - name: sum-ort-fastapi
+    type: service
+    image:
+      type: build
+      build_source:
+        type: local
+      build_spec:
+        type: tfy-python-buildpack
+        python_version: 3.9
+        command: bash run.sh
+        requirements_path: requirements.txt
+    ports:
+      - port: 8000
+    resources:
+      cpu_request: 4
+      cpu_limit: 5
+      memory_request: 5000
+      memory_limit: 10000
+      instance_family:
+        - c6i

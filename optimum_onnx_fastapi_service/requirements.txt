@@ -1,0 +1,10 @@
+transformers==4.22.1
+torch==1.12.1
+onnxruntime==1.12.1
+optimum==1.4.0
+onnx==1.12.0
+
+uvicorn==0.18.3
+fastapi==0.78.0
+pydantic==1.10.2
+gunicorn==20.1.0

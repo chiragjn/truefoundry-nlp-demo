@@ -1,0 +1,5 @@
+ort_onnx/
+venv/
+*.pyc
+.git/
+__pycache__/
